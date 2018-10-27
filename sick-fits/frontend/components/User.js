@@ -11,12 +11,16 @@ const CURRENT_USER_QUERY = gql`
   }
 `
 
-// Allow children to use the CURRENT_USER_QUERY
+// Allow children to use the CURRENT_USER_QUERY by creating a render prop component
 const User = props => (
   <Query {...props} query={CURRENT_USER_QUERY}>
     {payload => props.children(payload)}
   </Query>
 )
+
+User.propTypes = {
+  children: PropTypes.func.isRequired,
+}
 
 export default User
 export { CURRENT_USER_QUERY }
