@@ -11,7 +11,7 @@ server.express.use(cookieParser());
 
 // Middleware to populate current user (decode JWT)
 server.express.use((req, res, next) => {
-  const { token } = request.cookies;
+  const { token } = req.cookies;
   if (token) {
     // Verify that nobody has monkeyed with the token
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
