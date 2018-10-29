@@ -1,6 +1,10 @@
 # Public facing API (interfacing with via JS)
 # Don't need to redefine stuff that's in prisma.graphql
 
+type SuccessMessage {
+    message: String
+}
+
 
 # Insert data
 
@@ -11,6 +15,7 @@ type Mutation {
     deleteItem(id: ID!): Item
     signup(email: String!, password: String!, name: String!): User! 
     signin(email: String!, password: String!): User!
+    signout: SuccessMessage # Custom type not tied to prisma backend
 }
 
 # Get data
