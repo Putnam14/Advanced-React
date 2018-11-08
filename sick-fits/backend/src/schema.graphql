@@ -17,6 +17,7 @@ type Mutation {
     signin(email: String!, password: String!): User!
     signout: SuccessMessage # Custom type not tied to prisma backend
     requestReset(email: String!): SuccessMessage
+    resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 # Get data
