@@ -25,3 +25,11 @@ type Query {
     itemsConnection(where: ItemWhereInput): ItemConnection!
     me: User
 }
+
+# Define User in Yoga so we aren't exposing password, reset token to the frontend
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    permissions: [Permission!]!
+}
