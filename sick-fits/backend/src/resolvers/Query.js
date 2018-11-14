@@ -23,7 +23,7 @@ const Query = {
     hasPermission(ctx.request.user, ["ADMIN", "PERMISSIONUPDATE"]);
 
     // If they do, query all the users
-    return ctx.db.users({}, info); // info includes the graphql query coming from the client
+    return ctx.db.query.users({}, info); // info includes the graphql query coming from the client
   }
 };
 
