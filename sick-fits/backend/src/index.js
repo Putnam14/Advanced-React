@@ -21,6 +21,19 @@ server.express.use((req, res, next) => {
   next();
 });
 
+// Middleware to pop user onto each request
+server.express.use(async (req, res, next) => {
+  // If they are not logged in, skip
+  if (!req.userId) return next();
+  // Query the user
+  const user = await db.query.user(
+    { where: { id: req.userId } },
+    "{ id, name, email, permissions }"
+  );
+  req.user = user;
+  next();
+});
+
 server.start(
   {
     cors: {
