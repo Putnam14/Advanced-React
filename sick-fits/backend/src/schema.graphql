@@ -26,6 +26,7 @@ type Query {
     item(where: ItemWhereUniqueInput!): Item
     itemsConnection(where: ItemWhereInput): ItemConnection!
     me: User
+    users: [User]!
 }
 
 # Define User in Yoga so we aren't exposing password, reset token to the frontend
