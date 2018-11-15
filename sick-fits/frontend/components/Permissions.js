@@ -69,12 +69,10 @@ class UserPermissions extends React.Component {
     }).isRequired,
   }
 
-  user = this.props
-
   state = {
     // This is fine since we're seeding the initial state.
     // Usually you should not set state with props, in case things change upstream.
-    permissions: this.user.permissions,
+    permissions: this.props.user.permissions,
   }
 
   handlePermissionChange = event => {
@@ -106,6 +104,7 @@ class UserPermissions extends React.Component {
             <label htmlFor={`${user.id}-permission-${perm}-`}>
               <input
                 type="checkbox"
+                id={`${user.id}-permission-${perm}-`}
                 checked={permissions.includes(perm)}
                 value={perm}
                 onChange={this.handlePermissionChange}
