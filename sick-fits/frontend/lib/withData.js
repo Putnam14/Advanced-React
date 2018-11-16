@@ -3,6 +3,7 @@ import withApollo from 'next-with-apollo'
 // You can import Apollo along with any 'link's you want, or do this
 import ApolloClient from 'apollo-boost'
 import { endpoint } from '../config'
+import { LOCAL_STATE_QUERY } from '../components/Cart'
 
 function createClient({ headers }) {
   return new ApolloClient({
@@ -16,6 +17,30 @@ function createClient({ headers }) {
         },
         headers,
       })
+    },
+    // Local state
+    clientState: {
+      resolvers: {
+        Mutation: {
+          toggleCart(_, variables, { cache }) {
+            // Read the cartOpen value from cache
+            const { cartOpen } = cache.readQuery({
+              query: LOCAL_STATE_QUERY,
+            })
+            // Write the cart state to the opposite
+            const data = {
+              data: {
+                cartOpen: !cartOpen,
+              },
+            }
+            cache.writeData(data)
+            return data
+          },
+        },
+      },
+      defaults: {
+        cartOpen: true,
+      },
     },
   })
 }
