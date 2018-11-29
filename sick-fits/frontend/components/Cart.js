@@ -32,9 +32,11 @@ const Cart = () => (
           {toggleCart => (
             <Query query={LOCAL_STATE_QUERY}>
               {({ data }) => (
-                <CartStyles onClick={toggleCart} open={data.cartOpen}>
+                <CartStyles open={data.cartOpen}>
                   <header>
-                    <CloseButton title="close">&times;</CloseButton>
+                    <CloseButton title="close" onClick={toggleCart}>
+                      &times;
+                    </CloseButton>
                     <Supreme>
                       {me.name}
                       's Cart
