@@ -32,6 +32,6 @@ type Item {
 type CartItem {
   id: ID! @unique
   quantity: Int! @default(value: 1)
-  item: Item! #relationship to Item
+  item: Item #relationship to Item. Not required, since the item may have been deleted
   user: User! #relationship to User
 }
