@@ -38,7 +38,6 @@ class Items extends Component {
     return (
       <Center>
         <div>
-          <p>Items!</p>
           <Pagination page={page} />
           <Query
             query={ALL_ITEMS_QUERY}
