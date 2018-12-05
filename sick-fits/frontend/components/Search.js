@@ -67,6 +67,7 @@ class AutoComplete extends React.Component {
             isOpen,
             inputValue,
             highlightedIndex,
+            closeMenu,
           }) => (
             <div>
               {/* Expose the client to us
@@ -107,6 +108,7 @@ class AutoComplete extends React.Component {
                         Nothing found for {inputValue}
                       </DropDownItem>
                     )}
+                  {!inputValue && closeMenu()}
                 </DropDown>
               )}
             </div>
