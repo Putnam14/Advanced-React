@@ -27,12 +27,13 @@ const totalItems = cart =>
   cart.reduce((tally, item) => tally + item.quantity, 0)
 
 class TakeMyMoney extends React.Component {
-  onToken = (res, createOrder) => {
+  onToken = async (res, createOrder) => {
     console.log(res)
     // Manually call mutation once we have the charge token
-    createOrder({ variables: { token: res.id } }).catch(err =>
-      alert(err.message)
+    const order = await createOrder({ variables: { token: res.id } }).catch(
+      err => alert(err.message)
     )
+    console.log(order)
   }
 
   render() {
@@ -48,7 +49,9 @@ class TakeMyMoney extends React.Component {
                 amount={calcTotalPrice(me.cart)}
                 name="Sick Fits"
                 description={`Order of ${totalItems(me.cart)} items`}
-                image={me.cart[0].item && me.cart[0].item.image}
+                image={
+                  me.cart.length && me.cart[0].item && me.cart[0].item.image
+                }
                 stripeKey="pk_test_ul4ZQSTxyU2Ig1vNTR5kTbZ4"
                 currency="USD"
                 email={me.email}
