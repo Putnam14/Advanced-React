@@ -32,6 +32,7 @@ type Query {
     me: User
     users: [User]!
     order(id: ID!): Order
+    orders(orderBy: OrderOrderByInput): [Order]!
 }
 
 # Define User in Yoga so we aren't exposing password, reset token to the frontend
