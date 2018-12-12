@@ -10,7 +10,7 @@ const Nav = () => (
   <User>
     {// Destructure payload to data, and destructure data to me
     ({ data: { me } }) => (
-      <NavStyles>
+      <NavStyles data-test="nav">
         <Link href="/items">
           <a>Shop</a>
         </Link>
