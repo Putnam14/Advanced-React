@@ -28,7 +28,7 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: 'Cool shoes ',
+    title: '',
     description: '',
     image: '',
     largeImage: '',
@@ -48,10 +48,8 @@ class CreateItem extends Component {
     data.append('file', files[0])
     // Cloudinary upload preset
     data.append('upload_preset', 'sickfits')
-    console.log(data)
 
     // Do the actual uploading
-    console.log('Uploading image...')
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/sickfitsputnam/image/upload',
       {
@@ -74,6 +72,7 @@ class CreateItem extends Component {
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, { loading, error }) => (
           <Form
+            data-test="form"
             onSubmit={async e => {
               // Prevent page POST
               e.preventDefault()
