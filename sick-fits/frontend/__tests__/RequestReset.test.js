@@ -41,7 +41,7 @@ describe('<RequestReset/>', () => {
     })
     // submit the form
     form.simulate('submit')
-    await wait()
+    await wait(50)
     wrapper.update()
     expect(wrapper.find('p').text()).toContain(
       'Success! Check your email for a password reset link.'
