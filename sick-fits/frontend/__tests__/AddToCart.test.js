@@ -85,4 +85,16 @@ describe('<AddToCart/>', () => {
     expect(me2.cart[0].id).toBe('omg123')
     expect(me2.cart[0].quantity).toBe(3)
   })
+  it('Changes from add to adding when clicked', async () => {
+    const wrapper = mount(
+      <MockedProvider mocks={mocks}>
+        <AddToCart id="abc123" />
+      </MockedProvider>
+    )
+    await wait()
+    wrapper.update()
+    expect(wrapper.text()).toContain('Add To Cart 🛒')
+    wrapper.find('button').simulate('click')
+    expect(wrapper.text()).toContain('Adding To Cart 🛒')
+  })
 })
