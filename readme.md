@@ -1,7 +1,7 @@
 # Advanced React Course
 This is the repository for the project 'Sick Fits' created while following along with the Advanced React & GraphQL course by Wes Bos, below.
 
-You can see the deploy live at {DEPLOYMENT URL}, login with _test@bridgerputnam.me:testpw_.
+You can see the deploy live at [https://sick-fits-frontend-prod.herokuapp.com/](https://sick-fits-frontend-prod.herokuapp.com/), login with _test@bridgerputnam.me:testpw_.
 
 The web app is created with a Prisma server running atop PostgreSQL for storing data and to provide a GraphQL API, a Yoga server to process GraphQL queries and mutations, and a React app using next.js for serving up the web pages and the client-side app.
 
