@@ -39,7 +39,7 @@ server.start(
     cors: {
       // Requirements for accessing endpoint
       credentials: true,
-      origin: process.env.FRONTEND_URL
+      origin: true
     }
   },
   //Callback function
